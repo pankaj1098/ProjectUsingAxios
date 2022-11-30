@@ -29,3 +29,16 @@ function showNewUserOnScreen(user){
     const childHTML = `<li id='${user.email}'> '${user.name}' - '${user.email}' - '${user.PhoneNumber}'</li>`;
     parentNode.innerHTML = parentNode.innerHTML + childHTML;
 }
+
+window.addEventListener("DOMContentLoaded", () => {
+    const data=axios.get("https://crudcrud.com/api/6d66a0ab48e044ad9c8bbec1fbc2979f/appoinmentData")
+    .then((response) => {
+    // console.log(response)
+    for(var i=0; i< response.data.length; i++){ 
+        showNewUserOnScreen(response.data[i])
+    }
+    })
+    .catch((error) => { console.log(error)
+    })
+    console.log(data);
+})
